@@ -1,5 +1,4 @@
 ﻿using System;
- 
 namespace Exercicio_1
 {
     class Program
@@ -7,71 +6,59 @@ namespace Exercicio_1
         static void Main(string[] args)
         {
             Console.Title = "Calculadora";
-            Console.WriteLine("============================== CALCULADORA ==============================");
+            Console.WriteLine("============================== CALCULADORA DE REAJUSTE ==============================");
 
-            double valor1 = 0, valor2 = 0, resultado, numero;
-            string operador, valorDigitado;
-            bool isNumeroInteiro;
+            double salarioInicial, salarioReajustado, reajuste;
+            string percentual;
 
-            Console.WriteLine("Digite 0 1º valor: ");
-            valorDigitado = Console.ReadLine();
+            Console.WriteLine("Digite o seu salário: ");
+            salarioInicial = double.Parse(Console.ReadLine());
 
-            //verifica se é um número
-            isNumeroInteiro = double.TryParse(valorDigitado, out numero);
+            if(salarioInicial <= 280 ){
+                reajuste = 0.2 * salarioInicial;
+                percentual = "20%";
+                salarioReajustado = salarioInicial + reajuste;
 
-            //faz a validação
-            if (isNumeroInteiro)
-            {
-                valor1 = Math.Round(double.Parse(valorDigitado), 4);
+                Console.WriteLine("============================== SOBRE O SEU REAJUSTE ==============================");
+                Console.WriteLine($"O salário antes do reajuste: {salarioInicial}");
+                Console.WriteLine($"O percentual de aumento aplicado: {percentual}");
+                Console.WriteLine($"O valor do aumento: {reajuste}");
+                Console.WriteLine($"O novo salário, após o aumento: {salarioReajustado}");
+            } else if (salarioInicial >= 280 && salarioInicial <= 700 ){
+                reajuste = 0.15 * salarioInicial;
+                percentual = "15%";
+                salarioReajustado = salarioInicial + reajuste;
+
+                Console.WriteLine("============================== SOBRE O SEU REAJUSTE ==============================");
+                Console.WriteLine($"O salário antes do reajuste: {salarioInicial}");
+                Console.WriteLine($"O percentual de aumento aplicado: {percentual}");
+                Console.WriteLine($"O valor do aumento: {reajuste}");
+                Console.WriteLine($"O novo salário, após o aumento: {salarioReajustado}");
+            } else if (salarioInicial >= 700 && salarioInicial <= 1500 ) {
+                reajuste = 0.1 * salarioInicial;
+                percentual = "10%";
+                salarioReajustado = salarioInicial + reajuste;
+
+                Console.WriteLine("============================== SOBRE O SEU REAJUSTE ==============================");
+                Console.WriteLine($"O salário antes do reajuste: {salarioInicial}");
+                Console.WriteLine($"O percentual de aumento aplicado: {percentual}");
+                Console.WriteLine($"O valor do aumento: {reajuste}");
+                Console.WriteLine($"O novo salário, após o aumento: {salarioReajustado}");
+            } else if (salarioInicial >= 1500) {
+                reajuste = 0.05 * salarioInicial;
+                percentual = "5%";
+                salarioReajustado = salarioInicial + reajuste;
+
+                Console.WriteLine("============================== SOBRE O SEU REAJUSTE ==============================");
+                Console.WriteLine($"O salário antes do reajuste: {salarioInicial}");
+                Console.WriteLine($"O percentual de aumento aplicado: {percentual}");
+                Console.WriteLine($"O valor do aumento: {reajuste}");
+                Console.WriteLine($"O novo salário, após o aumento: {salarioReajustado}");
+                
+            } else {
+                Console.WriteLine("Salário não consta na lista de reajuste!");
             }
-            else {
-                Console.WriteLine("Digite um número válido!");
-            }
 
-            Console.WriteLine("Digite a operação(' / | + | * | - | %(MOD)'): ");
-            operador = Console.ReadLine();
-
-            Console.WriteLine("Digite o 2º valor: ");
-            valorDigitado = Console.ReadLine();
-
-            //verifica se é um número
-            isNumeroInteiro = double.TryParse(valorDigitado, out numero);
-
-            //faz a validação
-            if (isNumeroInteiro)
-            {
-                valor2 = Math.Round(double.Parse(valorDigitado), 4);
-            }
-            else {
-                Console.WriteLine("Digite um número válido!");
-            }
-
-            switch (operador)
-            {
-                case "+":
-                    resultado = Math.Round(valor1 + valor2, 4);
-                    Console.WriteLine($"{valor1} {'+'} {valor2} = {resultado}");
-                    break;
-                case "-":
-                    resultado = Math.Round(valor1 - valor2, 4);
-                    Console.WriteLine($"{valor1} {'-'} {valor2} = {resultado}");
-                    break;
-                case "*":
-                    resultado = Math.Round(valor1 * valor2, 4);
-                    Console.WriteLine($"{valor1} {'*'} {valor2} = {resultado}");
-                    break;
-                case "/":
-                    resultado = Math.Round(valor1 / valor2, 4);
-                    Console.WriteLine($"{valor1} {'/'} {valor2} = {resultado}");
-                    break;
-                case "%":
-                    resultado = Math.Round(valor1 % valor2, 4);
-                    Console.WriteLine($"{valor1} {'%'} {valor2} = {resultado}");
-                    break;
-                default:
-                    Console.WriteLine("Digite uma operação válida");
-                    break;
-            }
             Console.ReadKey();
 
         }
